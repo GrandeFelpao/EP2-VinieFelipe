@@ -38,4 +38,4 @@ def preenche_frota(frota,nome_do_navio,linha, coluna, orientacao, tamanho):
         posicao.append(define_posicoes(linha, coluna, orientacao, tamanho))
         frota[nome_do_navio]=posicao
     return frota
-
+(teste)
