@@ -1,19 +1,19 @@
-# Define posições-------------------------------------------------------------------------------------------------
+## Exercício 1 - Define Posições
 def define_posicoes(linha, coluna, orientacao, tamanho):
 
-    coordenadas = []
+    posicoes = []
 
     for i in range(tamanho):
-        coordenadas.append([linha, coluna])
+        posicoes.append([linha, coluna])
 
         if orientacao == "vertical":
             linha += 1
         if orientacao=="horizontal":
             coluna += 1
 
-    return coordenadas
+    return posicoes
 
-# Preenche frota--------------------------------------------------------------------------------------------------
+## Exercício 2 - Preenche Frota
 
 def define_posicoes(linha, coluna, orientacao, tamanho):
     coordenadas = []
@@ -38,4 +38,27 @@ def preenche_frota(frota,nome_do_navio,linha, coluna, orientacao, tamanho):
         posicao.append(define_posicoes(linha, coluna, orientacao, tamanho))
         frota[nome_do_navio]=posicao
     return frota
-(teste)
+
+## Exercício 3 - Faz Jogada------------------------------------------------------------------------------------
+
+def faz_jogada(tabuleiro, linha, coluna):
+    
+    if tabuleiro[linha][coluna] == 0:
+        tabuleiro[linha][coluna] = '-'
+    elif tabuleiro[linha][coluna] == 1:
+        tabuleiro[linha][coluna] = 'X'
+    
+    return tabuleiro
+
+## Exercíico 4 - Posiciona Frota-----------------------------------------------------------------------------------
+
+def posiciona_frota(informacoes):
+    tabuleiro = [[0] * 10 for _ in range(10)]
+
+    for navio, posicoes in informacoes.items():
+        for posicao in posicoes:
+            for coordenada in posicao:
+                x, y = coordenada
+                tabuleiro[x][y] = 1
+
+    return tabuleiro
