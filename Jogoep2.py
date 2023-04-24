@@ -55,7 +55,7 @@ def faz_jogada(tabuleiro, linha, coluna):
 def posiciona_frota(informacoes):
     tabuleiro = [[0] * 10 for _ in range(10)]
 
-    for navio, posicoes in informacoes.items():
+    for posicoes in informacoes.values():
         for posicao in posicoes:
             for coordenada in posicao:
                 x, y = coordenada
