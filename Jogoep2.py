@@ -62,3 +62,22 @@ def posiciona_frota(informacoes):
                 tabuleiro[x][y] = 1
 
     return tabuleiro
+
+## Exercício 5 - Quantas embarcações afundadas?
+
+def afundados(frota, tabuleiro):
+    afundados = []
+
+    for posicoes in frota.values():
+        for posicao in posicoes:
+            afundado = True
+            for coordenada in posicao:
+                x, y = coordenada
+                if tabuleiro[x][y] != 'X':
+                    afundado = False
+                    break
+            if afundado:
+                afundados.append(1)
+    resultado = len(afundados)
+
+    return resultado
