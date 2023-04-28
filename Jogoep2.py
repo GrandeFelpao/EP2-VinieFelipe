@@ -81,3 +81,19 @@ def afundados(frota, tabuleiro):
     resultado = len(afundados)
 
     return resultado
+
+## Exercício 6 - Posição Válida
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+    a = True
+    for posicao in posicoes:
+        if posicao[0] < 0 or posicao[0] > 9 or posicao[1] < 0 or posicao[1] > 9:
+            a = False
+
+        for navio in frota.values():
+            for navio_posicao in navio:
+                for coordenada in navio_posicao:
+                    if posicao == coordenada:
+                        a = False
+
+    return a
