@@ -83,17 +83,29 @@ def afundados(frota, tabuleiro):
     return resultado
 
 ## Exercício 6 - Posição Válida
-def posicao_valida(frota, linha, coluna, orientacao, tamanho):
-    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
-    a = True
-    for posicao in posicoes:
-        if posicao[0] < 0 or posicao[0] > 9 or posicao[1] < 0 or posicao[1] > 9:
-            a = False
+def define_posicoes(linha, coluna, orientacao, tamanho):
 
-        for navio in frota.values():
-            for navio_posicao in navio:
-                for coordenada in navio_posicao:
-                    if posicao == coordenada:
-                        a = False
+    posicoes = []
 
-    return a
+    for i in range(tamanho):
+        posicoes.append([linha, coluna])
+
+        if orientacao == "vertical":
+            linha += 1
+        if orientacao=="horizontal":
+            coluna += 1
+
+    return posicoes
+
+def posicao_valida (frota,linha,coluna,orientacao,tamanho):
+    posicao_do_barco=define_posicoes(linha, coluna, orientacao, tamanho)
+    for posicao in posicao_do_barco:
+        if posicao[0]>9 or posicao[1]>9:
+            return False
+        for posicao_existente in frota:
+            posicao_frota=frota[posicao_existente]
+            for barcos in posicao_frota:
+                for coordenadas in barcos:
+                    if coordenadas==posicao:
+                        return False
+    return True
